@@ -12,6 +12,7 @@ function Home() {
     const [inputType, setInputType] = useState('password')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [Error, setError] = useState('')
+    const [done,setDone]=useState('')
     const navigate = useNavigate()
     const { setUserDetails, userDetails } = useContext(UserContext)
     console.log(userDetails);
@@ -32,7 +33,7 @@ function Home() {
                 if (response.data.error) {
                     setError(response.data.error)
                 } else if(response.data){
-                    setError('password reset done')
+                    setDone('Password Reset Done')
                 }else{
                     setError(response.error)
                 }
@@ -45,13 +46,6 @@ function Home() {
 
 
 
-    useEffect(()=>{
-        if(userDetails){
-           navigate('/home') 
-        }else{
-            navigate('/')
-        }
-    },[])
 
     /* -------------------------------------------------------------------------- */
     /*                                 eye button                                 */
@@ -70,6 +64,7 @@ function Home() {
         e.preventDefault()
         localStorage.removeItem('user')
         localStorage.removeItem('usertoken')
+        setUserDetails('')
         navigate('/')
        
     }
@@ -89,6 +84,7 @@ function Home() {
                     <div>
                         <form className='max-w-[500px] w-full h-max mx-auto rounded-lg p-8 px-8 '>
                         {Error&& <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">{Error}</div>}
+                        {done&& <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">{done}</div>}
 
                             <div className='flex flex-col text-gray-400 py-2'>
                                 <label className='text-gray-400 text-bold'>Enter Current Password</label>

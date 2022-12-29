@@ -1,10 +1,8 @@
-import React, { useEffect, useState,useNavigate } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Navigate } from 'react-router-dom'
 
 function AdminHome() {
     const [users, setUsers] = useState([])
-    const navigate=useNavigate()
 
     useEffect(() => {
         axios.get("http://localhost:5000/admin/users",
@@ -19,7 +17,7 @@ function AdminHome() {
             }
         })
     }, [])
- 
+
     return (
         <div>
             <div>
@@ -45,23 +43,20 @@ function AdminHome() {
                                         class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                         EMAIL
                                     </th>
-                                    <th
-                                        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        JOIN-DATE
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                     users.map((obj, index) => {
                                         return (
-
-                                            <tr>
-                                                <td className="text-center">{index + 1}</td>
-                                                <td className="text-center">{obj._id}</td>
-                                                <td className="text-center">{obj.username}</td>
-                                                <td className="text-center">{obj.email}</td>
-                                            </tr>
+                                            <>
+                                                <tr>
+                                                    <td className="text-center">{index + 1}</td>
+                                                    <td className="text-center">{obj._id}</td>
+                                                    <td className="text-center">{obj.username}</td>
+                                                    <td className="text-center">{obj.email}</td>
+                                                </tr>
+                                            </>
                                         )
                                     })
                                 }
