@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from '../../assets/logo.png'
 import forgot from '../../assets/forgot.webp'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import { UserContext } from '../../Store/userContext'
 
 function ConfirmOtp() {
   const phone=useParams().phone
   const navigate = useNavigate() 
     const [Otp,SetOtp]=useState('')
-    const [message,setMessage]=useState(false)
+    const [message,setMessage]=useState('')
     const [errorMessage,setErrorMessage]=useState('')
+    const {setUserDetails, userDetails}=useContext(UserContext)
+
     const confirmOTP=async(e)=>{
         e.preventDefault()
         try {    
         const res=await axios.post('http://localhost:5000/confirmOtp',{Otp,phone})
         if(res){
-          setMessage(true)
-          navigate('/home')
+          setMessage('otp verification Successfull')
+                        localStorage.setItem('user', JSON.stringify(res.data?.user))
+                        setUserDetails(res.data?.user)
+                        navigate("/home");
         }else{
           setErrorMessage('Enter a valid OTP')
         }

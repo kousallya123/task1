@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from './Pages/LoginPage';
 import SignupPage from './Pages/SignupPage';
 import HomePage from './Pages/HomePage';
@@ -16,23 +16,23 @@ function App() {
   return (
     <div className="App">
       <User>
-     <Router>
-       <Routes>
-         <Route path='/signup' element={<SignupPage/>}/>
-         <Route path='/' element={<LoginPage/>}/>
-         <Route path='/forgot' element={<ForgotPage/>}/>
-         <Route path='/otp' element={<Otp/>}/>
-         <Route path='/confirmOtp/:phone' element={<ConfirmOtp/>}/>
+        <Router>
+          <Routes>
+            <Route path='/signup' element={<SignupPage />} />
+            <Route path='/' element={<LoginPage />} />
+            <Route path='/forgot' element={<ForgotPage />} />
+            <Route path='/otp' element={<Otp />} />
+            <Route path='/confirmOtp/:phone' element={<ConfirmOtp />} />
 
-         <Route path='/reset/:id/:token' element={<ResetPage/>}/>
-         <Route element={<PrivateRoute/>}>
-         <Route path='/home' element={<HomePage/>}/>
-         </Route>
-         <Route path='/admin-login' element={<AdminLoginpage/>}/>
-         <Route path='/admin-users' element={<AdminHomePage/>}/>
-       </Routes>
-     </Router>
-     </User>
+            <Route path='/reset/:id/:token' element={<ResetPage />} />
+            <Route element={<PrivateRoute />}>
+              <Route path='/home' element={<HomePage />} />
+            </Route>
+            <Route path='/admin-login' element={<AdminLoginpage />} />
+            <Route path='/admin-users' element={<AdminHomePage />} />
+          </Routes>
+        </Router>
+      </User>
     </div>
   );
 }

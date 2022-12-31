@@ -1,6 +1,9 @@
 const userSchema = require("../models/userSchema")
 const jwt = require('jsonwebtoken')
 
+
+// ADMIN LOGIN
+
 const ctrlLogin = (req, res) => {
     try {
 
@@ -8,8 +11,8 @@ const ctrlLogin = (req, res) => {
         const { email, password } = req.body
         if (email === ADMIN_EMAIL) {
             if (password === ADMIN_PWD) {
-                const id='12345678'
-                res.json({admin:true,auth:true,token:generateToken(id)})
+                const id = '12345678'
+                res.json({ admin: true, auth: true, token: generateToken(id) })
             } else {
                 res.json('Incorrect Password')
             }
@@ -22,6 +25,7 @@ const ctrlLogin = (req, res) => {
     }
 }
 
+
 const listUsers = async (req, res) => {
     try {
         const users = await userSchema.find()
@@ -33,12 +37,12 @@ const listUsers = async (req, res) => {
 
 }
 
-const generateToken=(id)=>{
-    return jwt.sign({id},process.env.JWT_SECRET,{
-        expiresIn:'30d',
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '30d',
     })
 
-  }
+}
 
 
 module.exports = { ctrlLogin, listUsers }
