@@ -170,6 +170,7 @@ const ctrlLogin = async (req, res) => {
    
   }
   
+// OTP GENERATION
 
   const genOtp=async(req,res)=>{
 
@@ -181,16 +182,16 @@ const ctrlLogin = async (req, res) => {
     if(Check){
 
       console.log("raeched");
-      // client.verify
-      // .services(otp.serviceID)
-      // .verifications.create({
-      //   to: `+91${req.body.number}`,
-      //   channel: "sms",
-      // })
-      // .then((resp) => {
-      //   console.log("response", resp);
-      //   res.status(200).json(resp);
-      // });
+      client.verify
+      .services(otp.serviceID)
+      .verifications.create({
+        to: `+91${phone}`,
+        channel: "sms",
+      })
+      .then((resp) => {
+        console.log("response", resp);
+        res.status(200).json(resp);
+      });
     }
     else{
       console.log("failed");

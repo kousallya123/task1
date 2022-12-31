@@ -1,5 +1,5 @@
 const router=require('express').Router()
-const {ctrlRegister,ctrlLogin,updatePassword,sendPasswordLink,updatePasswordMail}=require('../controllers/userCtrl')
+const {ctrlRegister,ctrlLogin,updatePassword,sendPasswordLink,updatePasswordMail, genOtp}=require('../controllers/userCtrl')
 
 router.post('/register',ctrlRegister)
 
