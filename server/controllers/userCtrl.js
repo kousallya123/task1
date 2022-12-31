@@ -202,4 +202,25 @@ const ctrlLogin = async (req, res) => {
 
   }
 
-module.exports = { ctrlRegister, ctrlLogin ,updatePassword,sendPasswordLink,updatePasswordMail,genOtp}    
+  // VERFIY OTP
+  const confirmOtp=(req,res)=>{
+    const {otp,phone}=req.body
+    console.log(otp);
+    client.verify
+    .services(otp.serviceID)
+    .verificationChecks.create({
+      to: phone,
+      code: otp,
+    })
+    .then((resp) => {
+      console.log("otp res", resp);
+      if (resp.valid) {
+        res.json({ resp, message: "Welcome" });
+      }
+      res.json({resp, message: "Expire Otp" });
+    });
+  }
+
+
+
+module.exports = { ctrlRegister, ctrlLogin ,updatePassword,sendPasswordLink,updatePasswordMail,genOtp,confirmOtp}    

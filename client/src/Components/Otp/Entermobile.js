@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import logo from '../../assets/logo.png'
 import forgot from '../../assets/forgot.webp'
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom'
 
-function Otp() {
+function Otp({details}) {
+  const navigate = useNavigate() 
+
     const [phone,setPhone]=useState('')
     const [message,setMessage]=useState(false)
     const [errorMessage,setErrorMessage]=useState('')
@@ -11,10 +14,13 @@ function Otp() {
         e.preventDefault()
         try {    
         const res=await axios.post('http://localhost:5000/genOtp',{phone:phone})
-        if(res.data==='Email send successfully'){
+        if(res){
+          console.log(res,"opop");
+          details(res.data.to)
           setMessage(true)
+          navigate(`/confirmOtp`)
         }else{
-          setErrorMessage('Enter a valid mail')
+          setErrorMessage('Enter a valid Mobile NUmber')
         }
           
         } catch (error) {
