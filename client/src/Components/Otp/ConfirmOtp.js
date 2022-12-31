@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import logo from '../../assets/logo.png'
 import forgot from '../../assets/forgot.webp'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-function ConfirmOtp({phone}) {
+function ConfirmOtp() {
+  const phone=useParams().phone
   const navigate = useNavigate() 
-    const [otp,SetOtp]=useState('')
+    const [Otp,SetOtp]=useState('')
     const [message,setMessage]=useState(false)
     const [errorMessage,setErrorMessage]=useState('')
     const confirmOTP=async(e)=>{
         e.preventDefault()
         try {    
-        const res=await axios.post('http://localhost:5000/confirmOtp',{otp,phone})
+        const res=await axios.post('http://localhost:5000/confirmOtp',{Otp,phone})
         if(res){
           setMessage(true)
           navigate('/home')
@@ -48,7 +49,7 @@ function ConfirmOtp({phone}) {
        <div className='flex flex-col text-gray-400 py-2'>
            <label className='text-gray-400 text-bold'>Type Your OTP</label>
            <input className='rounded-lg  mt-2 p-2 border border-black hover:bg-teal-50 hover:border-teal-500' type="text"
-           value={otp} onChange={(e)=>SetOtp(e.target.value)}/>
+           value={Otp} onChange={(e)=>SetOtp(e.target.value)}/>
        </div>
        <button className='w-full my-5 py-2 bg-teal-400 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg' onClick={confirmOTP}>VERIFY</button>  
    </form>

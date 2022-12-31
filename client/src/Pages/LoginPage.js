@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom'
 function LoginPage() {
   const { userDetails } = useContext(UserContext)
   const navigate=useNavigate()
-  useEffect(() => {
-    if (userDetails) {
-      navigate('/home')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (userDetails) {
+  //     navigate('/home')
+  //   }
+  // }, [])
   return (
     <div>
       <Login />

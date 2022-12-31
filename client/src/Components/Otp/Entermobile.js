@@ -4,7 +4,7 @@ import forgot from '../../assets/forgot.webp'
 import axios from 'axios'
 import { Navigate, useNavigate } from 'react-router-dom'
 
-function Otp({details}) {
+function Otp() {
   const navigate = useNavigate() 
 
     const [phone,setPhone]=useState('')
@@ -16,9 +16,8 @@ function Otp({details}) {
         const res=await axios.post('http://localhost:5000/genOtp',{phone:phone})
         if(res){
           console.log(res,"opop");
-          details(res.data.to)
           setMessage(true)
-          navigate(`/confirmOtp`)
+          navigate(`/confirmOtp/${phone}`)
         }else{
           setErrorMessage('Enter a valid Mobile NUmber')
         }

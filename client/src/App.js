@@ -22,7 +22,7 @@ function App() {
          <Route path='/' element={<LoginPage/>}/>
          <Route path='/forgot' element={<ForgotPage/>}/>
          <Route path='/otp' element={<Otp/>}/>
-         <Route path='/confirmOtp' element={<ConfirmOtp/>}/>
+         <Route path='/confirmOtp/:phone' element={<ConfirmOtp/>}/>
 
          <Route path='/reset/:id/:token' element={<ResetPage/>}/>
          <Route element={<PrivateRoute/>}>

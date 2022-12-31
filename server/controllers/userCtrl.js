@@ -204,13 +204,14 @@ const ctrlLogin = async (req, res) => {
 
   // VERFIY OTP
   const confirmOtp=(req,res)=>{
-    const {otp,phone}=req.body
-    console.log(otp);
+    const {Otp,phone}=req.body
+    console.log(Otp);
+    console.log(phone);
     client.verify
     .services(otp.serviceID)
     .verificationChecks.create({
-      to: phone,
-      code: otp,
+      to: `+91${phone}`,
+      code: Otp,
     })
     .then((resp) => {
       console.log("otp res", resp);
