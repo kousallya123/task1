@@ -84,9 +84,19 @@ function Login() {
                         </div>
                         <button className='w-full my-5 py-2 bg-teal-400 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Login</button>
                     </form>
+                        <Link to='/otp' className="font-medium text-teal-600 hover:text-teal-500">
+                    <p className="mt-2 text-center text-sm text-gray-600 mt-5">Login with OTP
+               
+                    </p>
+                        </Link>
+                    <p className="mt-2 text-center text-sm text-gray-600 mt-5">Forgot Password?
+                        <Link to='/forgot' className="font-medium text-teal-600 hover:text-teal-500">
+                            Click here
+                        </Link>
+                    </p>
+              
                 </div>
-
-
+              
             </div>
         </div>
     )

@@ -90,7 +90,7 @@ function Home() {
                                 <label className='text-gray-400 text-bold'>Enter Current Password</label>
                                 <input className='rounded-lg  mt-2 p-2 border border-black hover:bg-teal-50 hover:border-teal-500' type={inputType} value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} required />
                                 <button className="absolute right-4" onClick={handleInputType}>
-                                    {inputType === "password" ? <HiOutlineEyeOff className='relative text-black mr-96' /> : <HiOutlineEye className='relative text-black mr-96' />}
+                                    {inputType === "password" ? <HiOutlineEyeOff className='relative mr-[550px] mt-12 text-black' /> : <HiOutlineEye className='relative text-black mr-[550px] mt-12' />}
                                 </button>
                             </div>
                             <div className='flex flex-col text-gray-400 py-2'>
@@ -107,7 +107,7 @@ function Home() {
                     </div>
                 }
             </div>
-
+        
         </div>
     )
 }

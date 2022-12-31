@@ -8,6 +8,7 @@ import axios from 'axios';
 function Signup() {
     const [name, SetName] = useState('');
     const [email, SetEmail] = useState('');
+    const [phone, SetPhone] = useState('');
     const [password, SetPassword] = useState('');
     const [confirm, SetConfirm] = useState('');
     const [errorMessage, setErrorMessage] = useState('')
@@ -41,7 +42,8 @@ function Signup() {
                 const { data } = await axios.post(`http://localhost:5000/register`, {
                     username: name,
                     email: email,
-                    password: password
+                    password: password,
+                    phone: phone
                 })
                 if (data) {
                     if (data.user) {
@@ -88,6 +90,11 @@ function Signup() {
                                     <label className='text-gray-400 text-bold'>Email</label>
                                     <input className='rounded-lg  mt-2 p-2 border border-black hover:bg-teal-50 hover:border-teal-500' type="text" value={email}
                                         onChange={(e) => SetEmail(e.target.value)} />
+                                </div>
+                                <div className='flex flex-col text-gray-400 py-2'>
+                                    <label className=''>Phone</label>
+                                    <input className='p-2 rounded-lg  mt-2  border border-black hover:bg-slate-100 hover:border-teal-500' type="number" value={phone}
+                                        onChange={(e) => SetPhone(e.target.value)} />
                                 </div>
                                 <div className='flex flex-col text-gray-400 py-2'>
                                     <label className=''>Password</label>
