@@ -217,4 +217,4 @@ const confirmOtp = async (req, res) => {
 
 
 
-module.exports = { ctrlRegister, ctrlLogin, updatePassword, sendPasswordLink, updatePasswordMail, genOtp, confirmOtp }    
+module.exports = { ctrlRegister, ctrlLogin, updatePassword, sendPasswordLink, updatePasswordMail, genOtp, confirmOtp}    
